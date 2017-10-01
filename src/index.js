@@ -1,6 +1,4 @@
 module.exports = function check(str, bracketsConfig) {
-    // Данный алгоритм запатентован;) По всем вопросам использования обращаться к VladislavBaranov     
-    // переводим массив символов в строку
     var br = bracketsConfig.join('').split(',').join('');
     // стек открытых скобок
     var st = [];
@@ -12,10 +10,15 @@ module.exports = function check(str, bracketsConfig) {
         var ch = str[i];
         // ищем символ в скобках
         var ind = br.indexOf(ch);
-    if(ch=='|'){k+=1;}
-    if(ch=='7'){k7+=1;}
-    if(ch=='8'){k8+=1;}
-    
+    if(ch=='|'){
+	    k+=1;
+    }
+    if(ch=='7'){
+	    k7+=1;
+    }
+    if(ch=='8'){
+	    k8+=1;
+    }  
         // если символ найден
         if ((ind >= 0)&&(ch!='|')&&(ch!='7')&&(ch!='8')) {
             // проверяем, какая это символ
@@ -33,20 +36,35 @@ module.exports = function check(str, bracketsConfig) {
             }
         }
          //| 
-	if ((ch=='|')&&(k%2==0)) { st.push(ch);}
+    if ((ch=='|')&&(k%2==0)) { 
+	    st.push(ch);
+    }
     if ((ch=='|')&&(k%2==1)) { 
         if (st[st.length-1] != '|') return false;
-        else {st.pop();}}
+        else {
+		st.pop();
+	}
+    }
         //7
-    if ((ch=='7')&&(k7%2==0)) { st.push(ch);}
+    if ((ch=='7')&&(k7%2==0)) { 
+	    st.push(ch);
+    }
     if ((ch=='7')&&(k7%2==1)) {
         if (st[st.length-1] != '7') return false;
-        else {st.pop();}}
+        else {
+		st.pop();
+	}
+    }
         //8
-    if ((ch=='8')&&(k8%2==0)) { st.push(ch);}
+    if ((ch=='8')&&(k8%2==0)) { 
+	    st.push(ch);
+    }
     if ((ch=='8')&&(k8%2==1)) {
         if (st[st.length-1] != '8') return false;
-        else {st.pop();}}
+        else {
+		st.pop();
+	}
+    }
     
     }
     // если после обхода всей строки стек пуст - всё ок
